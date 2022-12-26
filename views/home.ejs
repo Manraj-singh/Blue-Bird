@@ -1,0 +1,23 @@
+    
+    <h1>Home</h1>
+    <p> <%=user.email%> <a href="/users/sign-out" >Sign out</a></p>
+
+    <hr>
+    <section id="feed-posts">
+        <h4>Posts</h4>
+        <form action="/posts/create" method="post">
+            <textarea name="content" cols="30" rows="3" placeholder="Type here..." required></textarea>
+            <input type="submit" value="Post">
+        </form>
+    </section>
+
+    <div id="post-list-container">
+        <ul>
+            <% for(post of posts){ %>
+                <%- include('_post')-%>
+                
+            <%} %>
+        </ul>
+    </div>
+    
+
