@@ -12,11 +12,12 @@ module.exports.create = function(req, res){
                 user: req.user._id
             }, function(err, comment){
                 // handle error
+                if(err){req.flash('error','Error while adding comment');}
                 //comment is pushed to post schema
                 post.comments.push(comment);
                 post.save();
-
-                res.redirect('/');
+                req.flash('success','Comment Added');
+                res.redirect('back');
             });
         }
 
@@ -36,12 +37,14 @@ module.exports.destroy =async function(req, res){
         comment.remove();
 
         let post = Post.findByIdAndUpdate(postId, { $pull: {comments: req.params.id}});
+        req.flash('success','Comment deleted');
         return res.redirect('back');
         
     }else{
             return res.redirect('back');
         }
     }catch(err){
-            console.log('error',err);
+
+            req.flash('error','Error while deleting comment');
         }
 }
