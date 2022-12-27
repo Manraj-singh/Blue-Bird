@@ -16,7 +16,8 @@ module.exports.home = async function(req, res){
                 'createdAt':-1
             }
          }
-        }).sort('-createdAt');  
+        }).sort('-createdAt');
+    
         return res.render('home', {
             title: "Blue Bird App",
             posts:posts

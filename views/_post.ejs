@@ -1,15 +1,36 @@
 <li>
+
+    <!-- delete button -->
     <% if((locals.user) && (locals.user.id == post.user.id)) {%>
     <small>
         <a href="/posts/destroy/<%=post._id %>">X</a>
     </small>
     <%}%>
-    <%= post.content%>
+<br>
+ <!-- post file as per postType -->
+    <% if (post.postType =='image'){%>
+        <img src="<%=post.file%>" alt="<%=post.postType%>" width="280" height="330">
+        <br>
+        <%=post.content%>
+    <%} else if(post.postType =='video'){%>
+        <video width="400" height="350" controls>
+            <source src="<%=post.file%>" alt="<%=post.postType%>" type="video/mp4">
+            video not supported
+        </video>
+        <br>
+        <%=post.content%>
+        <%}else{%>
+            <%= post.content%>
+            <%}%>
+
+<!-- user name -->
     <small>
         <p>By: <%=post.user.name%> </p>
         
     </small>
 
+
+<!-- comments below -->
     <div id="posts-comments">
         <% if(locals.user) { %>
             <form action="/comments/create" method="post">

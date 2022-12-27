@@ -7,7 +7,15 @@
         <h4>Posts</h4>
         <form action="/posts/create" method="post">
             <textarea name="content" cols="30" rows="3" placeholder="Type here..." required></textarea>
+            <br>
             <input type="submit" value="Post">
+            
+        </form>
+        <hr>
+        <form action="/posts/uploadPost" method="post" enctype="multipart/form-data">
+            <textarea name="content" cols="30" rows="2" placeholder="Type a caption."></textarea>
+            <input type="file" name="file" placeholder="post a video">
+            <input type="submit" value="upload">
         </form>
     </section>
 
