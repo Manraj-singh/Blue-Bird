@@ -8,6 +8,8 @@ const db = require('./config/mongoose');
 //passport related import
 const passport = require('passport');
 const passportGoogle = require('./config/passport-google-oauth2-strategy.js');
+const passportGithub = require('./config/passport-github2-strategy');
+
 const passportLocal = require('./config/passport-local-strategy');
 //used for session cookie
 const session = require('express-session');
