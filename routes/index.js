@@ -9,6 +9,9 @@ router.get('/',function(req,res){
     return res.redirect('/home');
 });
 router.get('/home',passport.checkAuthentication,homeController.home)
+
+
+
 router.use('/users', require('./users'));
 router.use('/posts',passport.checkAuthentication,require('./posts'))
 router.use('/comments', require('./comments'));

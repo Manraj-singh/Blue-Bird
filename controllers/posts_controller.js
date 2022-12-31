@@ -1,18 +1,36 @@
 const Post = require('../models/posts');
+const User = require('../models/user');
 const Comment = require('../models/comments');
 const fs = require('fs');
 const path = require('path')
 //creating post
-module.exports.create = function(req, res){
+module.exports.create = async function(req, res){
     try{
-        Post.create({
+        let post = await Post.create({
             content: req.body.content,
             user: req.user._id
         });
+
+        // //check if requies is xhr  , i.e, ajax
+        // let post2 = await post.populate('user');
+        // console.log("test string");
+        // console.log(post2);
+        // if(req.xhr){
+        //     console.log("xhr");
+            
+        //     return res.status(200).json({
+        //         data:{
+        //             post:post2
+        //         },message:"Post created "
+        //     })
+        // }
+        // 
         
+        // 
         req.flash('success','Post published');
         return res.redirect('back');
     }catch(err){
+        console.log(err);
         req.flash('error','Error while creating post');
         return res.redirect('back');
     }

@@ -1,0 +1,62 @@
+        <!-- myfriends -->
+        <div id="users-myfriends">
+            <p>My Friends</p>
+            <ul>
+                <% for(user of allUsers){ %>
+                    <% if(fList.includes(user.id)){%>
+                   <li>
+                    <%=user.name%> : <a href="/users/friendship/Remove/<%=user.id%>">Remove Friend</a>
+                    
+                    </li>
+                    
+                <% } }%>
+            </ul>
+        </div>
+        <hr>
+
+        <!-- requets received  -->
+        <div id="users-request-received">
+            <p>Requests recieved</p>
+            <ul>
+                <% for(user of allUsers){ %>
+                    <% if(receivedList.includes(user.id)){%>
+                   <li>
+                    <%=user.name%> : <a href="/users/friendship/accept/<%=user.id%>"> Accept request</a>
+                    or
+                    <a href="/users/friendship/cancel/<%=user.id%>">Cancel request</a>
+                    
+                    </li>
+                    
+                <% } }%>
+            </ul>
+        </div>
+        <hr>
+        <!-- requests-sent -->
+        <div id="users-request-sent">
+            <p>requests sent</p>
+            <ul>
+                <% for(user of allUsers){ %>
+                    <% if(sendList.includes(user.id)){%>
+                   <li>
+                    <%=user.name%> :  <a href="/users/friendship/cancel/<%=user.id%>"> Cancel Request</a>
+                    
+                    </li>
+                    <%}%>
+                <%  }%>
+            </ul>
+        </div>
+ <!-- //remaining all users -->
+ <hr>
+
+ <div id="users-all">
+    <ul>
+        <% for(user of allUsers){ %>
+            <% if(!(sendList.includes(user.id) || receivedList.includes(user.id) || fList.includes(user.id))){%>
+           <li>
+            <%=user.name%> : <a href="/users/friendship/send/<%=user.id%>"> Add friend</a>
+            
+            </li>
+            
+        <% } }%>
+    </ul>
+</div>

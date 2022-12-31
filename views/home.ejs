@@ -1,11 +1,18 @@
+
+    <nav>
+        <h1>Home</h1>
+        <p> <%=user.email%> <a href="/users/sign-out" >Sign out</a></p>
+    </nav>
     
-    <h1>Home</h1>
-    <p> <%=user.email%> <a href="/users/sign-out" >Sign out</a></p>
 
     <hr>
+
+<main id="home-main" style="display: flex; justify-content: space-evenly;" >
+
+<div id="home-main-left" style="width: 60%;" >
     <section id="feed-posts">
         <h4>Posts</h4>
-        <form action="/posts/create" method="post">
+        <form id="new-post-form" action="/posts/create" method="post">
             <textarea name="content" cols="30" rows="3" placeholder="Type here..." required></textarea>
             <br>
             <input type="submit" value="Post">
@@ -19,6 +26,7 @@
         </form>
     </section>
 
+
     <div id="post-list-container">
         <ul>
             <% for(post of posts){ %>
@@ -27,5 +35,14 @@
             <%} %>
         </ul>
     </div>
+
+</div>
+
+    <div id="users-all" style="width: 30%;">
+        <%- include('_users-all')-%>
+    </div>
     
+
+</main>
+    <script src="/js/home_post.js"></script>
 

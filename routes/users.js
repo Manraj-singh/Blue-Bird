@@ -4,9 +4,9 @@ const router = express.Router();
 const passport = require('passport');
 const usersController = require('../controllers/users_controller');
 
-// router.get('/profile', usersController.profile);
 
-// router.get('/sign-up', usersController.signUp);
+// router.use('/users/friendship', require('./friendship'));
+// signin -- signout related routes
 router.get('/sign-in', usersController.signIn);
 router.get('/sign-out',usersController.destroySession);
 
@@ -33,5 +33,12 @@ router.get('/auth/google/callback',passport.authenticate(
         'github',
         {failureRedirect:'/users/sign-in'}
         ),usersController.createSession);
+
+
+        router.get('/friendship/send/:id', passport.checkAuthentication, usersController.sendFriendRequest);
+        router.get('/friendship/accept/:id', passport.checkAuthentication, usersController.acceptFriendRequest);
+        router.get('/friendship/cancel/:id', passport.checkAuthentication, usersController.removeFriendRequest);
+        router.get('/friendship/remove/:id', passport.checkAuthentication, usersController.removeFriendRequest); 
+
 
 module.exports = router;

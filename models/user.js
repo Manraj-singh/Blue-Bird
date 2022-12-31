@@ -18,7 +18,16 @@ const userSchema = new mongoose.Schema({
     },
     avatar:{
         type:String
-    }
+    },//to implement friend request feature
+    friendList:[{ 
+        userid : {
+            type:  mongoose.Schema.Types.ObjectId,
+            ref: 'User' 
+        },
+        status : { // "Sent" / "Received" / "Friends"
+            type: String
+        }
+    }]
 }, {
     timestamps: true
 });
