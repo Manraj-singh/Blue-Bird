@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const multer = require('multer');
 const path = require('path');
 const FILE_PATH = path.join('/uploads/users/post');
+const deepPopulate = require('mongoose-deep-populate')(mongoose)
 
 const postSchema = new mongoose.Schema({
     content: {
@@ -29,7 +30,14 @@ const postSchema = new mongoose.Schema({
             type:  mongoose.Schema.Types.ObjectId,
             ref: 'Comment'
         }
+    ],
+    likes:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'Like'
+        }
     ]
+
 },{
     timestamps: true
 });
@@ -62,6 +70,13 @@ postSchema.statics.uploadedPost = multer({storage:storage,
 }
 }).single('file');
 postSchema.statics.postPath = FILE_PATH;
+
+postSchema.plugin(deepPopulate, {
+    whitelist :[
+        'comments.user',
+        'comments.likes'
+    ]
+});
 
 
 const Post = mongoose.model('Posts', postSchema);

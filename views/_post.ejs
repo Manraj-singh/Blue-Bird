@@ -1,4 +1,4 @@
-<li>
+<li style="border: 1px solid cyan;">
 
     <!-- delete button -->
     <% if((locals.user) && (locals.user.id == post.user.id)) {%>
@@ -28,6 +28,9 @@
         <p>By: <%=post.user.name%> </p>
         
     </small>
+    
+<!-- like section -->
+<%- include('_likes')-%>
 
 
 <!-- comments below -->

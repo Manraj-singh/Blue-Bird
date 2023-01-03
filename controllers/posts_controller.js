@@ -1,5 +1,6 @@
 const Post = require('../models/posts');
 const User = require('../models/user');
+const Like = require('../models/like');
 const Comment = require('../models/comments');
 const fs = require('fs');
 const path = require('path')
@@ -11,22 +12,7 @@ module.exports.create = async function(req, res){
             user: req.user._id
         });
 
-        // //check if requies is xhr  , i.e, ajax
-        // let post2 = await post.populate('user');
-        // console.log("test string");
-        // console.log(post2);
-        // if(req.xhr){
-        //     console.log("xhr");
-            
-        //     return res.status(200).json({
-        //         data:{
-        //             post:post2
-        //         },message:"Post created "
-        //     })
-        // }
-        // 
-        
-        // 
+ 
         req.flash('success','Post published');
         return res.redirect('back');
     }catch(err){
@@ -85,6 +71,10 @@ module.exports.destroy = async function(req, res){
             if(post.file){
                 fs.unlinkSync(path.join(__dirname,'..',post.file));
             }
+
+            //deleting likes associaled wit post and comments on post deletion
+            await Like.deleteMany({likeable:post,onModel:'Post'})
+            await Like.deleteMany({_id:{$in:post.comments}});
             post.remove();
             req.flash('success','Post Deleted');
             

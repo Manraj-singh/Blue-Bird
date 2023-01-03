@@ -11,12 +11,16 @@ const LikeSchema = new mongoose.Schema({
         required:true,
         refPath:'onModel'
     },
-    //this field is for defining the typr of liked object since this is a dynamic referaence
+    reaction:{
+        type: String, // Like, Love, Haha, Wow, Sad, Angry
+        required:true
+    },
+    //this field is for defining the type of liked object since this is a dynamic referaence
     onModel:{
         type:String,
         required:true,
         //only values defind in enum can have Like
-        enum:[]
+        enum:['Post','Comment']
     }
 },{
     timestamps:true

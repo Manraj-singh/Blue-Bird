@@ -1,48 +1,43 @@
 
-    <nav>
-        <h1>Home</h1>
-        <p> <%=user.email%> <a href="/users/sign-out" >Sign out</a></p>
-    </nav>
-    
+<main id="home-feed" class="d-flex">
+<div class="wrapper d-flex  flex-row align-items-stretch">
+    <nav id="sidebar"> 
+        <div class="custom-menu">
+            <button type="button" id="sidebarCollapse" class="btn btn-primary">
+    </button>
+</div>
+      <div class="img bg-wrap text-center py-4" style="background-image: url(images/bg_1.jpg);">
+          <div class="user-logo">
+              <div class="img" style="background-image: url(images/logo.jpg);"></div>
+              <h3><%=user.name%></h3>
+          </div>
+      </div>
+<ul class="list-unstyled components mb-5">
+  <li class="active">
+    <a href="/home"><span class="fa fa-home mr-3"></span> Home</a>
+  </li>
+  <li>
+    <a href="#"><span class="fa fa-cog mr-3"></span> Settings</a>
+  </li>
+  <li>
+    <a href="/users/sign-out" ><span class="fa fa-sign-out mr-3"></span> Sign Out</a>
+  </li>
+</ul>
 
-    <hr>
-
-<main id="home-main" style="display: flex; justify-content: space-evenly;" >
-
-<div id="home-main-left" style="width: 60%;" >
-    <section id="feed-posts">
-        <h4>Posts</h4>
-        <form id="new-post-form" action="/posts/create" method="post">
-            <textarea name="content" cols="30" rows="3" placeholder="Type here..." required></textarea>
-            <br>
-            <input type="submit" value="Post">
-            
-        </form>
-        <hr>
-        <form action="/posts/uploadPost" method="post" enctype="multipart/form-data">
-            <textarea name="content" cols="30" rows="2" placeholder="Type a caption."></textarea>
-            <input type="file" name="file" placeholder="post a video">
-            <input type="submit" value="upload">
-        </form>
-    </section>
-
-
-    <div id="post-list-container">
-        <ul>
-            <% for(post of posts){ %>
-                <%- include('_post')-%>
-                
-            <%} %>
-        </ul>
-    </div>
-
+</nav>
 </div>
 
-    <div id="users-all" style="width: 30%;">
-        <%- include('_users-all')-%>
-    </div>
-    
+<!-- Page Content  -->
+<div id="content" class="p-4 p-md-5 pt-5">
+<%-include('_home-feed')-%>
+</div>
+
 
 </main>
-    <script src="/js/home_post.js"></script>
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/popper.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
 

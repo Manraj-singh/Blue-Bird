@@ -1,0 +1,45 @@
+<main id="home-main" style="display: flex; justify-content: space-between;" >
+
+<div id="home-main-left" style="width: 50%;" >
+    <section id="feed-posts">
+        <h4>Posts</h4>
+        <form id="new-post-form" action="/posts/create" method="post">
+            <textarea name="content" cols="30" rows="3" placeholder="Type here..." required></textarea>
+            <br>
+            <input type="submit" value="Post">
+            
+        </form>
+        <hr>
+        <form action="/posts/uploadPost" method="post" enctype="multipart/form-data">
+            <textarea name="content" cols="30" rows="2" placeholder="Type a caption."></textarea>
+            <input type="file" name="file" placeholder="post a video">
+            <input type="submit" value="upload">
+        </form>
+    </section>
+
+<!-- posts container section -->
+    <div id="post-list-container" style="border: 1px solid red;">
+        <ul>
+            <% for(post of posts){ %>
+                <%- include('_post')-%>
+                
+            <%} %>
+        </ul>
+    </div>
+<!--  -->
+</div>
+
+<!-- friends section -->
+<div id="users-all" style="width: 30%;">
+    <%- include('_users-all')-%>
+</div>
+    
+
+</main>
+<script src="/js/toggle_like.js"></script>
+<script>
+    $('.toggle-like-button').each(function(){
+        let self = this;
+        let toggleLike = new HandleReaction(this)
+    })
+</script>
