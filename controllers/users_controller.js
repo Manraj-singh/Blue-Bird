@@ -4,7 +4,8 @@ const User = require('../models/user');
 // render the sign in  /signup page
 module.exports.signIn = function(req, res){
     if(req.isAuthenticated()){
-        return res.redirect('/home')
+        
+        return res.redirect('/')
     }
     return res.render('user_sign_in');
 
@@ -39,7 +40,14 @@ module.exports.create = function(req, res){
 // // sign in and create a session for the user
 module.exports.createSession = function(req, res){
     req.flash('success','Login successful')
-    return res.redirect('/home');
+    console.log('auth',req.user.userType);
+    if(req.user.userType ==='organization'){
+
+        return res.redirect('/organization');
+    }else{
+
+        return res.redirect('/home');
+    }
 
 }
 

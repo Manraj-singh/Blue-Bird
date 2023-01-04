@@ -7,7 +7,7 @@ module.exports.home = async function(req, res){
    
     try{
         // populate the user of each post
-        let posts = await Posts.find({userType:'personal'})
+        let posts = await Posts.find({userType:'organization'})
         .sort('-createdAt')
         .populate('user')
         .populate('likes')
@@ -20,7 +20,7 @@ module.exports.home = async function(req, res){
             }
            }) .deepPopulate('comments.user comments.likes')
 
-
+           console.log(posts);
 
         //let posts = await Posts.find({}).sort('-createdAt').populate('user')
         // .populate({
@@ -43,7 +43,7 @@ module.exports.home = async function(req, res){
         // //     }
         // })
 
-        let users = await User.find({ _id: { $ne: req.user.id } ,userType:'personal'}).sort('-createdAt');
+        let users = await User.find({ _id: { $ne: req.user.id } ,userType:'organization'}).sort('-createdAt');
         
         // let usersNotfriends = users.filter((usr)=>{
         //     return usr.status
@@ -164,21 +164,9 @@ module.exports.home = async function(req, res){
             // postEle.save();
             
         });
-        if(req.user.userType==='organization'){
-            // return res.render('organization', {
-            //     title: "Blue Bird App",
-            //     posts:posts,
-            //     currentUser:currentUser,
-            //     allUsers:users,
-            //     fList:fList,
-            //     sendList:sendList,
-            //     receivedList:receiveList
-            // });
-            
-        }
         
         let displayInput =false;
-        if(req.user.userType==='personal'){
+        if(req.user.userType==='organization'){
             displayInput=true;
         }
         return res.render('home', {

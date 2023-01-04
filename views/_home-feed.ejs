@@ -1,6 +1,8 @@
 <main id="home-main" style="display: flex; justify-content: space-between;" >
 
 <div id="home-main-left" style="width: 50%;" >
+    <!-- input form post  -->
+    <%if(displayInput){%>
     <section id="feed-posts">
         <h4>Posts</h4>
         <form id="new-post-form" action="/posts/create" method="post">
@@ -10,17 +12,20 @@
             
         </form>
         <hr>
+
+        
         <form action="/posts/uploadPost" method="post" enctype="multipart/form-data">
             <textarea name="content" cols="30" rows="2" placeholder="Type a caption."></textarea>
             <input type="file" name="file" placeholder="post a video">
             <input type="submit" value="upload">
         </form>
     </section>
-
+    <%}%>
 <!-- posts container section -->
     <div id="post-list-container" style="border: 1px solid red;">
         <ul>
             <% for(post of posts){ %>
+                
                 <%- include('_post')-%>
                 
             <%} %>
@@ -30,11 +35,13 @@
 </div>
 
 <!-- friends section -->
+<%if(displayInput ||user.userType==='personal'){%>
 <div id="users-all" style="width: 30%;">
-    <%- include('_users-all')-%>
-</div>
-    
 
+    <%- include('_friends')-%>
+    
+</div>
+<%}%>
 </main>
 <script src="/js/toggle_like.js"></script>
 <script>

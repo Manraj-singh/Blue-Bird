@@ -3,10 +3,19 @@
             <p>My Friends</p>
             <ul>
                 <% for(user of allUsers){ %>
-                    <% if(fList.includes(user.id)){%>
+                    <% if(fList.includes(user.id) && user.userType==='personal' ){%>
                    <li>
-                    <%=user.name%> : <a href="/users/friendship/Remove/<%=user.id%>">Remove Friend</a>
+                    <%=user.name%> : <a href="/users/friendship/Remove/<%=user.id%>">
+                        
+                        <%if(user.userType==='personal'){%>
+                            Remove Friend
+                           <%}else{%>
+                               unfollow
+                               <%}%>
+                        
                     
+                    </a>
+                    <i class="fa-solid fa-message <%= user.email %> <%= user.id %>"></i>
                     </li>
                     
                 <% } }%>
@@ -53,7 +62,13 @@
         <% for(user of allUsers){ %>
             <% if(!(sendList.includes(user.id) || receivedList.includes(user.id) || fList.includes(user.id))){%>
            <li>
-            <%=user.name%> : <a href="/users/friendship/send/<%=user.id%>"> Add friend</a>
+            <%=user.name%> :<a href="/users/friendship/send/<%=user.id%>">
+                <%if(user.userType==='personal'){%>
+                 Add friend
+                <%}else{%>
+                    Follow
+                    <%}%>
+                </a>
             
             </li>
             

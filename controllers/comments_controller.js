@@ -30,6 +30,7 @@ module.exports.destroy =async function(req, res){
     //using async await
     try{
         let comment = await Comment.findById(req.params.id)
+        
         if (comment.user == req.user.id){
 
         let postId = comment.post;
@@ -40,9 +41,9 @@ module.exports.destroy =async function(req, res){
         
         //destroy associated like for this comment
 
-        console.log('above',comment._id);
-    //    let test= await Like.deletemany({likeable:comment._id,onModel:'Comment'})
-        console.log('below');
+        
+       let test= await Like.deleteMany({likeable:comment._id,onModel:'Comment'})
+        
 
         // await Like.deleteMany({likeable: post, onModel: 'Post'});
         // await Like.deleteMany({_id: {$in: comment.likes}});
@@ -54,7 +55,7 @@ module.exports.destroy =async function(req, res){
             return res.redirect('back');
         }
     }catch(err){
-
+            console.log(err);
             req.flash('error','Error while deleting comment');
         }
 }

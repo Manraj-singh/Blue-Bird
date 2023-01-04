@@ -17,7 +17,7 @@
     <a href="/home"><span class="fa fa-home mr-3"></span> Home</a>
   </li>
   <li>
-    <a href="#"><span class="fa fa-cog mr-3"></span> Settings</a>
+    <a href="/organization"><span class="fa fa-cog mr-3"></span> Organizations</a>
   </li>
   <li>
     <a href="/users/sign-out" ><span class="fa fa-sign-out mr-3"></span> Sign Out</a>
@@ -32,6 +32,7 @@
 <%-include('_home-feed')-%>
 </div>
 
+<%-include('_chatbox')-%>
 
 </main>
 
@@ -39,5 +40,21 @@
 <script src="/js/popper.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+<script src="/js/chat_engine.js"></script>
 
+<% if (locals.user){ %>
+<script>
+    $('.fa-message').click(function(e){
+        console.log("clicked",e.target.classList[2]);
+        let receiverMail = e.target.classList[2];
+        let receiverId = e.target.classList[3];
+        $('#user-chat-box').css('display','block');
+        console.log('user-chat-box', '<%= locals.user.email %>',receiverMail,receiverId,'<%= locals.user.id %>');
+        new ChatEngine('user-chat-box', '<%= locals.user.email %>',receiverMail,receiverId,'<%= locals.user.id %>' );
+       
+    });
+    
+</script>
+<% } %>
 

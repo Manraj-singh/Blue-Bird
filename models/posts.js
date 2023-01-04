@@ -15,6 +15,10 @@ const postSchema = new mongoose.Schema({
         ref: 'User'
 
     },
+    userType:{
+        type:String,
+        required:true
+    },
     //this stores path of file in DB 
     file:{
         type:String
