@@ -6,7 +6,7 @@ const chatSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    
+
     from_user: {  // Sender
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
@@ -17,11 +17,11 @@ const chatSchema = new mongoose.Schema({
         ref: 'User',
         required: true
     }
-    ,chatroom: {  // ChatRoom is stored to populate the data from db fr each user's conversation
+    , chatroom: {  // ChatRoom is stored to populate the data from db fr each user's conversation
         type: String,
         required: true
     },
-},{
+}, {
     timestamps: true
 });
 

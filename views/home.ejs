@@ -1,14 +1,13 @@
-
 <main id="home-feed" class="d-flex">
   <%-include('_sidebar')-%>
 
 
-<!-- Page Content  -->
-<div id="content" class="p-4 p-md-5 pt-5">
-<%-include('_home-feed')-%>
-</div>
+    <!-- Page Content  -->
+    <div id="content" class="p-4 p-md-5 pt-5">
+      <%-include('_home-feed')-%>
+    </div>
 
-<%-include('_chatbox')-%>
+    <%-include('_chatbox')-%>
 
 </main>
 
@@ -20,17 +19,16 @@
 <script src="/js/chat_engine.js"></script>
 
 <% if (locals.user){ %>
-<script>
-    $('.fa-message').click(function(e){
-        console.log("clicked",e.target.classList[2]);
-        let receiverMail = e.target.classList[2];
-        let receiverId = e.target.classList[3];
-        $('#user-chat-box').css('display','block');
-        console.log('user-chat-box', '<%= locals.user.email %>',receiverMail,receiverId,'<%= locals.user.id %>');
-        new ChatEngine('user-chat-box', '<%= locals.user.email %>',receiverMail,receiverId,'<%= locals.user.id %>' );
-       
-    });
-    
-</script>
-<% } %>
+  <script>
+    $('.fa-message').click(function (e) {
+      console.log("clicked", e.target.classList[2]);
+      let receiverMail = e.target.classList[2];
+      let receiverId = e.target.classList[3];
+      $('#user-chat-box').css('display', 'block');
+      console.log('user-chat-box', '<%= locals.user.email %>', receiverMail, receiverId, '<%= locals.user.id %>');
+      new ChatEngine('user-chat-box', '<%= locals.user.email %>', receiverMail, receiverId, '<%= locals.user.id %>');
 
+    });
+
+  </script>
+  <% } %>

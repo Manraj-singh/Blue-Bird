@@ -8,8 +8,8 @@
             <div class="bg-white rounded shadow " style="width: 100%;">
                 <div class="post-header" style="padding: 2% 8%;">
                     <div class="d-flex align-items-center">
-                        <img  src="<%= post.user.avatar || '/uploads/users/avatars/default.png'%>" alt="avatar" class="rounded-circle me-2"
-                            style="width: 38px; height: 38px; object-fit: cover" />
+                        <img src="<%= post.user.avatar || '/uploads/users/avatars/default.jpg'%>" alt="avatar"
+                            class="rounded-circle me-2" style="width: 38px; height: 38px; object-fit: cover" />
                         <%= post.user.name%>
                     </div>
 
@@ -76,15 +76,15 @@
                     <div class="bg-white rounded shadow " style="width: 100%;">
                         <div class="post-header" style="padding: 2% 8%;">
                             <div class="d-flex align-items-center">
-                                <img  src="<%= post.user.avatar || '/uploads/users/avatars/default.png'%>" alt="avatar" class="rounded-circle me-2"
-                                    style="width: 38px; height: 38px; object-fit: cover" />
+                                <img src="<%= post.user.avatar || '/uploads/users/avatars/default.jpg'%>" alt="avatar"
+                                    class="rounded-circle me-2" style="width: 38px; height: 38px; object-fit: cover" />
                                 <%= post.user.name%>
                             </div>
-                                <% if((locals.user) && (locals.user.id==post.user.id)) {%>
-                                    <small>
-                                        <a href="/posts/destroy/<%=post._id %>"><i class="fa fa-trash"></i></a>
-                                    </small>
-                                    <%}%>
+                            <% if((locals.user) && (locals.user.id==post.user.id)) {%>
+                                <small>
+                                    <a href="/posts/destroy/<%=post._id %>"><i class="fa fa-trash"></i></a>
+                                </small>
+                                <%}%>
                         </div>
                         <hr>
                         <center>
@@ -156,16 +156,17 @@
 
                                             <div class="post-header">
                                                 <div class="d-flex align-items-center">
-                                                    <img  src="<%= post.user.avatar || '/uploads/users/avatars/default.png'%>" alt="avatar" class="rounded-circle me-2"
+                                                    <img src="<%= post.user.avatar || '/uploads/users/avatars/default.jpg'%>"
+                                                        alt="avatar" class="rounded-circle me-2"
                                                         style="width: 38px; height: 38px; object-fit: cover" />
                                                     <%= post.user.name%>
                                                 </div>
-                                                    <% if((locals.user) && (locals.user.id==post.user.id)) {%>
-                                                        <small>
-                                                            <a href="/posts/destroy/<%=post._id %>"><i
-                                                                    class="fa fa-trash"></i></a>
-                                                        </small>
-                                                        <%}%>
+                                                <% if((locals.user) && (locals.user.id==post.user.id)) {%>
+                                                    <small>
+                                                        <a href="/posts/destroy/<%=post._id %>"><i
+                                                                class="fa fa-trash"></i></a>
+                                                    </small>
+                                                    <%}%>
                                             </div>
                                             <hr>
                                             <p class="mb-0 mt-2 font-italic">

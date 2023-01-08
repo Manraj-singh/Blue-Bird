@@ -1,44 +1,65 @@
-    <small>
-     
-        <!-- start emoji part -->
-        <% if(post.emojiData){ %>
-             
-            <% if(post.emojiData.post_id === post._id) { %>
+<small>
+
+    <!-- start emoji part -->
+    <% if(post.emojiData){ %>
+
+        <% if(post.emojiData.post_id===post._id) { %>
             <div>
-                  <!-- Displaying selected emoji -->
-                  
-                    <a class="toggle-like-button" data-Like="<%=post.emojiData.like.length%>" href="/home/reactions/toggle/?id=<%=post._id%>&type=Post&reaction=Like">
-                     👍</a> <span class="post-reaction-like-<%=post._id%>"> <%=post.emojiData.like.length %> </span>
+                <!-- Displaying selected emoji -->
 
-                    <a class="toggle-like-button" data-Love="<%= post.emojiData.love.length %>" href="/home/reactions/toggle/?id=<%=post._id%>&type=Post&reaction=Love">
-                   ❤ </a>  <span class="post-reaction-love-<%=post._id%>"> <%= post.emojiData.love.length %></span>
+                <a class="toggle-like-button" data-Like="<%=post.emojiData.like.length%>"
+                    href="/home/reactions/toggle/?id=<%=post._id%>&type=Post&reaction=Like">
+                    👍</a> <span class="post-reaction-like-<%=post._id%>">
+                    <%=post.emojiData.like.length %>
+                </span>
 
-                    <a class="toggle-like-button" data-Sad="<%=post.emojiData.sad.length %>"  href="/home/reactions/toggle/?id=<%=post._id%>&type=Post&reaction=Sad">
-                     😞</a>  <span class="post-reaction-sad-<%=post._id%>">  <%= post.emojiData.sad.length %></span>
+                <a class="toggle-like-button" data-Love="<%= post.emojiData.love.length %>"
+                    href="/home/reactions/toggle/?id=<%=post._id%>&type=Post&reaction=Love">
+                    ❤ </a> <span class="post-reaction-love-<%=post._id%>">
+                    <%= post.emojiData.love.length %>
+                </span>
 
-                     <a class="toggle-like-button" data-Angry="<%= post.emojiData.angry.length %>" href="/home/reactions/toggle/?id=<%=post._id%>&type=Post&reaction=Angry">
-                      😡</a>     <span class="post-reaction-angry-<%=post._id%>"> <%= post.emojiData.angry.length %></span>
+                <a class="toggle-like-button" data-Sad="<%=post.emojiData.sad.length %>"
+                    href="/home/reactions/toggle/?id=<%=post._id%>&type=Post&reaction=Sad">
+                    😞</a> <span class="post-reaction-sad-<%=post._id%>">
+                    <%= post.emojiData.sad.length %>
+                </span>
 
-                       <a class="toggle-like-button" data-Wow="<%= post.emojiData.wow.length %>" href="/home/reactions/toggle/?id=<%=post._id%>&type=Post&reaction=Wow">
-                        😲</a>       <span class="post-reaction-wow-<%=post._id%>"> <%= post.emojiData.wow.length %></span>
-                
-             
-            
+                <a class="toggle-like-button" data-Angry="<%= post.emojiData.angry.length %>"
+                    href="/home/reactions/toggle/?id=<%=post._id%>&type=Post&reaction=Angry">
+                    😡</a> <span class="post-reaction-angry-<%=post._id%>">
+                    <%= post.emojiData.angry.length %>
+                </span>
+
+                <a class="toggle-like-button" data-Wow="<%= post.emojiData.wow.length %>"
+                    href="/home/reactions/toggle/?id=<%=post._id%>&type=Post&reaction=Wow">
+                    😲</a> <span class="post-reaction-wow-<%=post._id%>">
+                    <%= post.emojiData.wow.length %>
+                </span>
+
+
+
             </div>
             <% } %>
-            
-            <% }else{ %>
-                <div>
-                    <a class="reaction-count-<%=post._id%>" data-likes="<%= post.likes.length %>" data-reactions="" disabled></a>
-                    <a class="toggle-like-button"  href="/home/reactions/toggle/?id=<%=post._id%>&type=Post&reaction=Like"> 0👍   </a>
-                    <a class="toggle-like-button"  href="/home/reactions/toggle/?id=<%=post._id%>&type=Post&reaction=Love"> 0❤ </a>
-                    <a class="toggle-like-button"  href="/home/reactions/toggle/?id=<%=post._id%>&type=Post&reaction=Sad"> 0😞</a>
-                    <a class="toggle-like-button"  href="/home/reactions/toggle/?id=<%=post._id%>&type=Post&reaction=Angry">0😡</a>
-                    <a class="toggle-like-button"  href="/home/reactions/toggle/?id=<%=post._id%>&type=Post&reaction=Wow">0😲</a>
-                  </div>
-            <% } %>
-       
-                <!-- end emoji part -->
-       
-       
-    </small>
+
+                <% }else{ %>
+                    <div>
+                        <a class="reaction-count-<%=post._id%>" data-likes="<%= post.likes.length %>" data-reactions=""
+                            disabled></a>
+                        <a class="toggle-like-button"
+                            href="/home/reactions/toggle/?id=<%=post._id%>&type=Post&reaction=Like"> 0👍 </a>
+                        <a class="toggle-like-button"
+                            href="/home/reactions/toggle/?id=<%=post._id%>&type=Post&reaction=Love"> 0❤ </a>
+                        <a class="toggle-like-button"
+                            href="/home/reactions/toggle/?id=<%=post._id%>&type=Post&reaction=Sad"> 0😞</a>
+                        <a class="toggle-like-button"
+                            href="/home/reactions/toggle/?id=<%=post._id%>&type=Post&reaction=Angry">0😡</a>
+                        <a class="toggle-like-button"
+                            href="/home/reactions/toggle/?id=<%=post._id%>&type=Post&reaction=Wow">0😲</a>
+                    </div>
+                    <% } %>
+
+                        <!-- end emoji part -->
+
+
+</small>

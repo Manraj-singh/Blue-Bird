@@ -1,82 +1,82 @@
-        <!-- myfriends -->
-        <div id="users-myfriends">
-            <%if(user.userType==='personal'){%>
-            <p>My Friends</p>
-            <%}else{%>
-                <p>Following</p>
-                <%}%>
-            <ul>
-                <% for(user of allUsers){ %>
-                    <% if(fList.includes(user.id) ){%>
-                   <li>
-                    <%=user.name%> : <a href="/users/friendship/Remove/<%=user.id%>">
-                        
-                        <%if(user.userType==='personal'){%>
-                            Remove Friend
-                           <%}else{%>
-                               unfollow
-                               <%}%>
-                        
-                    
-                    </a>
-                    <i class="fa-solid fa-message <%= user.email %> <%= user.id %>"></i>
-                    </li>
-                    
-                <% } }%>
-            </ul>
-        </div>
-        <hr>
+<!-- myfriends -->
+<div id="users-myfriends">
+    <%if(user.userType==='personal'){%>
+        <p>My Friends</p>
+        <%}else{%>
+            <p>Following</p>
+            <%}%>
+                <ul>
+                    <% for(user of allUsers){ %>
+                        <% if(fList.includes(user.id) ){%>
+                            <li>
+                                <%=user.name%> : <a href="/users/friendship/Remove/<%=user.id%>">
 
-        <!-- requets received  -->
-        <div id="users-request-received">
-            <p>Requests recieved</p>
-            <ul>
-                <% for(user of allUsers){ %>
-                    <% if(receivedList.includes(user.id)){%>
-                   <li>
+                                        <%if(user.userType==='personal'){%>
+                                            Remove Friend
+                                            <%}else{%>
+                                                unfollow
+                                                <%}%>
+
+
+                                    </a>
+                                    <i class="fa-solid fa-message <%= user.email %> <%= user.id %>"></i>
+                            </li>
+
+                            <% } }%>
+                </ul>
+</div>
+<hr>
+
+<!-- requets received  -->
+<div id="users-request-received">
+    <p>Requests recieved</p>
+    <ul>
+        <% for(user of allUsers){ %>
+            <% if(receivedList.includes(user.id)){%>
+                <li>
                     <%=user.name%> : <a href="/users/friendship/accept/<%=user.id%>"> Accept request</a>
-                    or
-                    <a href="/users/friendship/cancel/<%=user.id%>">Cancel request</a>
-                    
-                    </li>
-                    
-                <% } }%>
-            </ul>
-        </div>
-        <hr>
-        <!-- requests-sent -->
-        <div id="users-request-sent">
-            <p>requests sent</p>
-            <ul>
-                <% for(user of allUsers){ %>
-                    <% if(sendList.includes(user.id)){%>
-                   <li>
-                    <%=user.name%> :  <a href="/users/friendship/cancel/<%=user.id%>"> Cancel Request</a>
-                    
-                    </li>
-                    <%}%>
-                <%  }%>
-            </ul>
-        </div>
- <!-- //remaining all users -->
- <hr>
+                        or
+                        <a href="/users/friendship/cancel/<%=user.id%>">Cancel request</a>
 
- <div id="users-all">
+                </li>
+
+                <% } }%>
+    </ul>
+</div>
+<hr>
+<!-- requests-sent -->
+<div id="users-request-sent">
+    <p>requests sent</p>
+    <ul>
+        <% for(user of allUsers){ %>
+            <% if(sendList.includes(user.id)){%>
+                <li>
+                    <%=user.name%> : <a href="/users/friendship/cancel/<%=user.id%>"> Cancel Request</a>
+
+                </li>
+                <%}%>
+                    <% }%>
+    </ul>
+</div>
+<!-- //remaining all users -->
+<hr>
+
+<div id="users-all">
     <p>Suggestions for you</p>
     <ul>
         <% for(user of allUsers){ %>
             <% if(!(sendList.includes(user.id) || receivedList.includes(user.id) || fList.includes(user.id))){%>
-           <li>
-            <%=user.name%> :<a href="/users/friendship/send/<%=user.id%>">
-                <%if(user.userType==='personal'){%>
-                 Add friend
-                <%}else{%>
-                    Follow
-                    <%}%>
-                </a>
-            
-            </li>
-            
-        <% } }%>
+                <li>
+                    <%=user.name%> :<a href="/users/friendship/send/<%=user.id%>">
+                            <%if(user.userType==='personal'){%>
+                                Add friend
+                                <%}else{%>
+                                    Follow
+                                    <%}%>
+                        </a>
+
+                </li>
+
+                <% } }%>
     </ul>
 </div>

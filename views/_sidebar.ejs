@@ -1,32 +1,34 @@
-<nav id="sidebar"> 
-    <div class="custom-menu">
-        <button type="button" id="sidebarCollapse" class="btn btn-primary">
-</button>
-</div>
-  <div class="img bg-wrap text-center py-4" style="background-image: url(images/bg_1.jpg);">
-      <div class="user-logo">
-        <%if(user.avatar){%>
-          <div class="img" style="background-image: url(/uploads/users/avatars/<%=user.avatar.split('/')[1]%>)"></div>
-          <%}else{%>
-            <div class="img" style="background-image: url(/uploads/users/avatars/default.jpg)"></div>
-            <%}%>
-          <h3><%=user.name%></h3>
-          
-      </div>
+<nav id="sidebar">
+  <div class="custom-menu">
+    <button type="button" id="sidebarCollapse" class="btn btn-primary">
+    </button>
   </div>
-<ul class="list-unstyled components mb-5">
-<li class="active">
-<a href="/home"><span class="fa fa-home mr-3"></span> Home</a>
-</li>
-<li>
-<a href="/organization"><span class="fa fa-building mr-3"></span> Organizations</a>
-</li>
-<li>
-<a href="/users/profile/<%=locals.user._id%>"><span class="fa fa-user mr-3"></span> profile</a>
-</li>
-<li>
-<a href="/users/sign-out" ><span class="fa fa-sign-out mr-3"></span> Sign Out</a>
-</li>
-</ul>
+  <div class="img bg-wrap text-center py-4" style="background-image: url(images/bg_1.jpg);">
+    <div class="user-logo">
+      <%if(user.avatar){%>
+        <div class="img" style="background-image: url(/uploads/users/avatars/<%=user.avatar.split('/')[1]%>)"></div>
+        <%}else{%>
+          <div class="img" style="background-image: url(/uploads/users/avatars/default.jpg)"></div>
+          <%}%>
+            <h3>
+              <%=user.name%>
+            </h3>
+
+    </div>
+  </div>
+  <ul class="list-unstyled components mb-5">
+    <li class="active">
+      <a href="/home"><span class="fa fa-home mr-3"></span> Home</a>
+    </li>
+    <li>
+      <a href="/organization"><span class="fa fa-building mr-3"></span> Organizations</a>
+    </li>
+    <li>
+      <a href="/users/profile/<%=locals.user._id%>"><span class="fa fa-user mr-3"></span> profile</a>
+    </li>
+    <li>
+      <a href="/users/sign-out"><span class="fa fa-sign-out mr-3"></span> Sign Out</a>
+    </li>
+  </ul>
 
 </nav>

@@ -5,15 +5,15 @@ const port = 8000;
 const expressLayouts = require('express-ejs-layouts');
 const db = require('./config/mongoose');
 
-//passport related import
+//passport related imports
 const passport = require('passport');
 const passportGoogle = require('./config/passport-google-oauth2-strategy.js');
 const passportGithub = require('./config/passport-github2-strategy');
-
 const passportLocal = require('./config/passport-local-strategy');
+
 //used for session cookie
 const session = require('express-session');
-const  MongoStore  = require('connect-mongo');
+const MongoStore = require('connect-mongo');
 const flash = require('connect-flash')
 const customMware = require('./config/middleware');
 
@@ -30,31 +30,26 @@ app.use(cookieParser());
 
 app.use(express.static('./assets'));
 //make uploads folder available to browser
-app.use('/uploads',express.static(__dirname+'/uploads'))
+app.use('/uploads', express.static(__dirname + '/uploads'))
 app.use(expressLayouts);
-// extract style and scripts from sub pages into the layout
-// app.set('layout extractStyles', true);
-// app.set('layout extractScripts', true);
 
-
-// console.log(db._connectionString);
 
 // set up the view engine
 app.set('view engine', 'ejs');
 app.set('views', './views');
 //mongo store is used to store session cookie in db
 app.use(session({
-    name:'blueBird',
-    secret:'somesecretkey',
-    saveUninitialized:false,
-    resave:false,
-    cookie:{
-        maxAge:(1000*60*1000)
+    name: 'blueBird',
+    secret: 'somesecretkey',
+    saveUninitialized: false,
+    resave: false,
+    cookie: {
+        maxAge: (1000 * 60 * 1000)
     },
-   
-    store:MongoStore.create({
+
+    store: MongoStore.create({
         mongoUrl: db._connectionString,
-        autoRemove:'disabled'
+        autoRemove: 'disabled'
     })
 }));
 
@@ -66,8 +61,8 @@ app.use(flash());
 app.use(customMware.setFlash);
 // use express router
 app.use('/', require('./routes'));
-app.listen(port, function(err){
-    if (err){
+app.listen(port, function (err) {
+    if (err) {
         console.log(`Error in running the server: ${err}`);
     }
 

@@ -16,26 +16,26 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    userType:{
-        type:String,
-        default:'personal',
-        required:true
+    userType: {
+        type: String,
+        default: 'personal',
+        required: true
     },
-    phone:{
-        type:Number
+    phone: {
+        type: Number
     },
-    gender:{
-        type:String
+    gender: {
+        type: String
     },
-    avatar:{
-        type:String
+    avatar: {
+        type: String
     },//to implement friend request feature
-    friendList:[{ 
-        userid : {
-            type:  mongoose.Schema.Types.ObjectId,
-            ref: 'User' 
+    friendList: [{
+        userid: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
         },
-        status : { // "Sent" / "Received" / "Friends"
+        status: { // "Sent" / "Received" / "Friends"
             type: String
         }
     }]
@@ -45,17 +45,17 @@ const userSchema = new mongoose.Schema({
 
 let userStorage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, path.join(__dirname,'..',AVATAR_PATH));
+        cb(null, path.join(__dirname, '..', AVATAR_PATH));
     },
     filename: function (req, file, cb) {
         console.log('file');
         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-        cb(null, 'AVATAR'+'.'+file.mimetype.split("/")[1])
+        cb(null, 'AVATAR' + '.' + file.mimetype.split("/")[1])
     }
-  })
+})
 
-  //static function
-userSchema.statics.uploadedAvatar = multer({storage:userStorage}).single('avatar');
+//static function
+userSchema.statics.uploadedAvatar = multer({ storage: userStorage }).single('avatar');
 userSchema.statics.avatarPath = AVATAR_PATH;
 
 const User = mongoose.model('User', userSchema);
