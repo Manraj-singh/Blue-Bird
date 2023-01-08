@@ -1,7 +1,7 @@
 <div class="card-back">
     <div class="center-wrap">
         <div class="section text-center">
-            <h4 class="mb-4 pb-3">Sign Up</h4>
+            <h4 class="mb-2 mt-3 pb-2">Sign Up</h4>
             <Form action="/users/create" method="post">
                 <div class="form-group">
                     <input type="text" name="name" class="form-style" placeholder=" Full Name" id="logname"
@@ -23,8 +23,8 @@
                         id="logpass" autocomplete="off">
                     <i class="input-icon uil uil-lock-alt"></i>
                 </div>
-                <div class="form-group mt-2">
-                    <label for="userType">Select account type</label>
+                <div class="form-group d-flex align-items-center mt-2">
+                    <label class="w-50" for="userType">Account type :</label>
                     <select name="userType" id="userType" class="form-style">
                         <option value="personal">personal</option>
                         <option value="organization">organization</option>
@@ -32,6 +32,14 @@
                 </div>
                 <input type="submit" value="Sign Up" class="btn mt-4"></a>
             </Form>
+            <p class="mb-0 mt-4 text-center">
+                <p>or sign-in with :</p>
+                <h4>
+                <a class="mr-3 " href="/users/auth/google"><i class="fa fa-google"></i></a>
+
+                <a href="/users/auth/github"><i class="fa fa-github"></i></a>
+            </h4>
+            </p>
         </div>
     </div>
 </div>
