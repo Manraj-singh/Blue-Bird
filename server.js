@@ -29,6 +29,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser());
 
 app.use(express.static('./assets'));
+//make uploads folder available to browser
 app.use('/uploads',express.static(__dirname+'/uploads'))
 app.use(expressLayouts);
 // extract style and scripts from sub pages into the layout

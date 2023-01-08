@@ -38,6 +38,7 @@ module.exports.uploadPost = function(req, res){
                     user: req.user._id,
                     file:Post.postPath + '/' + req.file.filename,
                     postType:fileType,
+                    userType:req.user.userType
 
                 };
 

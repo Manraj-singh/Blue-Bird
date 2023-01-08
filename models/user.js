@@ -21,6 +21,12 @@ const userSchema = new mongoose.Schema({
         default:'personal',
         required:true
     },
+    phone:{
+        type:Number
+    },
+    gender:{
+        type:String
+    },
     avatar:{
         type:String
     },//to implement friend request feature
@@ -37,18 +43,19 @@ const userSchema = new mongoose.Schema({
     timestamps: true
 });
 
-let storage = multer.diskStorage({
+let userStorage = multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, path.join(__dirname,'..',AVATAR_PATH));
     },
     filename: function (req, file, cb) {
-      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-      cb(null, file.fieldname + '-' + uniqueSuffix)
+        console.log('file');
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+        cb(null, 'AVATAR'+'.'+file.mimetype.split("/")[1])
     }
   })
 
   //static function
-userSchema.statics.uploadedAvatar = multer({storage:storage}).single('avatar');
+userSchema.statics.uploadedAvatar = multer({storage:userStorage}).single('avatar');
 userSchema.statics.avatarPath = AVATAR_PATH;
 
 const User = mongoose.model('User', userSchema);

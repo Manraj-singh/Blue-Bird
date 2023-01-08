@@ -6,15 +6,10 @@ const homeController = require('../controllers/home_controller');
 const organizationController = require('../controllers/organization_controller');
 
 
-router.get('/',function(req,res){
+router.get('/',passport.checkAuthentication,function(req,res){
     console.log(req.user.userType);
-    if(req.user.userType ==='organization'){
-
-        return res.redirect('/organization');
-    }else{
-
         return res.redirect('/home');
-    }
+    
 });
 router.use('/home',passport.checkAuthentication,require('./home'))
 router.use('/organization',passport.checkAuthentication,organizationController.home);

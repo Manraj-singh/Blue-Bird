@@ -1,9 +1,13 @@
         <!-- myfriends -->
         <div id="users-myfriends">
+            <%if(user.userType==='personal'){%>
             <p>My Friends</p>
+            <%}else{%>
+                <p>Following</p>
+                <%}%>
             <ul>
                 <% for(user of allUsers){ %>
-                    <% if(fList.includes(user.id) && user.userType==='personal' ){%>
+                    <% if(fList.includes(user.id) ){%>
                    <li>
                     <%=user.name%> : <a href="/users/friendship/Remove/<%=user.id%>">
                         
@@ -58,6 +62,7 @@
  <hr>
 
  <div id="users-all">
+    <p>Suggestions for you</p>
     <ul>
         <% for(user of allUsers){ %>
             <% if(!(sendList.includes(user.id) || receivedList.includes(user.id) || fList.includes(user.id))){%>

@@ -68,7 +68,7 @@ module.exports.sendFriendRequest = async function(req, res){
 
         // console.log("sender : " + req.user.id);
         // console.log("receiver : " + req.params.id);
-
+        
         let sender = await User.findById(req.user.id);
         let receiver = await User.findById(req.params.id);
 

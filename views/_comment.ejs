@@ -1,24 +1,24 @@
 <li>
     <p>
+        <div class="d-flex justify-content-start"> 
         <% if((locals.user) && (locals.user.id == comment.user.id)) {%>
             <small>
-                <a href="/comments/destroy/<%=comment._id %>">X</a>
+                <a href="/comments/destroy/<%=comment._id %>"><i class="fa fa-trash"></i></a>
             </small>
             <%}%>
-        <%=comment.content %>
-        <br>
-        <small>
-            <%=comment.user.email%>
-        </small>
+        
+            <%=comment.user.name%> :  <%=comment.content %>
+        
+    </div>
     </p>   
 
-
-    <small>
+<div class="d-flex justify-content-end">
+    <span>
+    <small >
      
         <!-- start emoji part -->
         <% if(comment.commentEmojiData){ %>
-             <span class="reaction-icon-<%=comment._id%>"></span> 
-            <a class="reaction-count-<%=comment._id%>" data-likes="" data-reactions="" disabled></a>
+             
             <% if(comment.commentEmojiData?.post_id === comment._id) { %>
             <div>
                   <!-- Displaying selected emoji -->
@@ -58,4 +58,6 @@
        
        
     </small>
+</span>
+</div>
 </li>

@@ -7,6 +7,10 @@ module.exports.home = async function(req, res){
    
     try{
         // populate the user of each post
+        // if(req.user.userType ==='organization'){
+
+        //     return res.redirect('/organization');
+        // }
         let posts = await Posts.find({userType:'personal'})
         .sort('-createdAt')
         .populate('user')

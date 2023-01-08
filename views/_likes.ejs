@@ -2,8 +2,7 @@
      
         <!-- start emoji part -->
         <% if(post.emojiData){ %>
-             <span class="reaction-icon-<%=post._id%>"></span> 
-            <a class="reaction-count-<%=post._id%>" data-likes="" data-reactions="" disabled></a>
+             
             <% if(post.emojiData.post_id === post._id) { %>
             <div>
                   <!-- Displaying selected emoji -->
